@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const {
+  getAllHistories,
   getOneHistory,
   createOwnHistory,
   updateOwnHistory,
@@ -12,6 +13,7 @@ const {
   checkAdmin
 } = require("../middlewares/")
 
+router.get('/', checkAuth, checkAdmin, getAllHistories) 
 router.get('/me', checkAuth, checkAdmin, getOneHistory) 
 router.post('/me', checkAuth, checkAdmin, createOwnHistory)
 router.put('/me', checkAuth, checkAdmin, updateOwnHistory) 

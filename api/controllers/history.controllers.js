@@ -1,5 +1,21 @@
 const History = require('../models/history')
 
+async function getAllHistories(req, res) {
+  try {
+    const history = await History.findAll(
+      {
+        where: req.query
+      })
+    if (history) {
+      return res.status(200).json(history)
+    } else {
+      return res.status(404).send("No history found");
+    }
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
 async function getOneHistory(req, res) {
   try {
     const history = await History.findByPk(req.params.id)
@@ -69,6 +85,7 @@ async function deleteHistory(req, res) {
 }
 
 module.exports = {
+  getAllHistories,
   getOneHistory,
   createOwnHistory,
   updateOwnHistory,

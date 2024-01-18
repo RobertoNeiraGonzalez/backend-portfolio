@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const {
+  getAllBackground,
   getOwnBackground,
   createOwnBackground,
   updateOwnBackground,
@@ -12,9 +13,10 @@ const {
   checkAdmin
 } = require("../middlewares/")
 
+router.get('/', checkAuth, checkAdmin, getAllBackground) 
 router.get('/me', checkAuth, checkAdmin, getOwnBackground) 
 router.post('/me', checkAuth, checkAdmin, createOwnBackground)
-router.put('/me', checkAuth, checkAdmin, updateOwnBackground) 
-router.delete('/me', checkAuth, checkAdmin, deleteOwnBackground) 
+router.put('/me/:id', checkAuth, checkAdmin, updateOwnBackground) 
+router.delete('/me/:id', checkAuth, checkAdmin, deleteOwnBackground) 
 
 module.exports = router

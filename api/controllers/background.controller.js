@@ -1,6 +1,22 @@
 const User = require('../models/user.model')
 const Background = require('../models/background')
 
+async function getAllBackground(req, res) {
+  try {
+    const background = await Background.findAll(
+      {
+        where: req.query
+      })
+    if (background) {
+      return res.status(200).json(background)
+    } else {
+      return res.status(404).send("No background found");
+    }
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
 async function getOwnBackground(req, res) {
   try {
     const background = await Background.findAll({
@@ -72,6 +88,7 @@ async function deleteOwnBackground(req, res) {
 }
 
 module.exports = {
+  getAllBackground,
   getOwnBackground,
   createOwnBackground,
   updateOwnBackground,

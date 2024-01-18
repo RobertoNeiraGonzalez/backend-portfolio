@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const {
+  getAllProject,
   getOwnProject,
   createOwnProject,
   updateOwnProject,
@@ -12,6 +13,7 @@ const {
   checkAdmin
 } = require("../middlewares/")
 
+router.get('/', checkAuth, checkAdmin, getAllProject) 
 router.get('/me', checkAuth, checkAdmin, getOwnProject) 
 router.post('/me', checkAuth, checkAdmin, createOwnProject)
 router.put('/me', checkAuth, checkAdmin, updateOwnProject) 

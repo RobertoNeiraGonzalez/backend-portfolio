@@ -1,6 +1,22 @@
 const User = require('../models/user.model')
 const Project = require('../models/projects')
 
+async function getAllProject(req, res) {
+  try {
+    const project = await Project.findAll(
+      {
+        where: req.query
+      })
+    if (project) {
+      return res.status(200).json(project)
+    } else {
+      return res.status(404).send("No project found");
+    }
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+}
+
 async function getOwnProject(req, res) {
   try {
     const project = await Project.findAll({
@@ -72,6 +88,7 @@ async function deleteOwnProject(req, res) {
 }
 
 module.exports = {
+  getAllProject,
   getOwnProject,
   createOwnProject,
   updateOwnProject,
