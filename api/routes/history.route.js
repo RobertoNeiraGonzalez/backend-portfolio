@@ -16,8 +16,8 @@ const {
 router.get('/', checkAuth, checkAdmin, getAllHistories) 
 router.get('/me', checkAuth, checkAdmin, getOneHistory) 
 router.post('/me', checkAuth, checkAdmin, createOwnHistory)
-router.put('/me', checkAuth, checkAdmin, updateOwnHistory) 
-router.delete('/me', checkAuth, checkAdmin, deleteHistory) 
+router.put('/me/:id', checkAuth, checkAdmin, updateOwnHistory) 
+router.delete('/me/:id', checkAuth, checkAdmin, deleteHistory) 
 
 
 module.exports = router

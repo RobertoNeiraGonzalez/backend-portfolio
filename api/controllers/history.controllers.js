@@ -1,3 +1,4 @@
+const User = require('../models/user.model')
 const History = require('../models/history')
 
 async function getAllHistories(req, res) {
