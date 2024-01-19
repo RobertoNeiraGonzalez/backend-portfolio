@@ -8,7 +8,7 @@ const Project = connection.define('project',
       allowNull: true
     },
     info: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3000),
       allowNull: true,
     },
     image: {

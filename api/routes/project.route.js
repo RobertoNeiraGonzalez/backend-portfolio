@@ -15,9 +15,9 @@ const {
 
 router.get('/', checkAuth, checkAdmin, getAllProject) 
 router.get('/me', checkAuth, checkAdmin, getOwnProject) 
-router.post('/me', checkAuth, checkAdmin, createOwnProject)
-router.put('/me', checkAuth, checkAdmin, updateOwnProject) 
-router.delete('/me', checkAuth, checkAdmin, deleteOwnProject) 
+router.post('/', checkAuth, checkAdmin, createOwnProject)
+router.put('/:id', checkAuth, checkAdmin, updateOwnProject) 
+router.delete('/:id', checkAuth, checkAdmin, deleteOwnProject) 
 
 
 module.exports = router
